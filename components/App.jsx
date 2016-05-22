@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, Router, Route} from 'react-router';
+import TopBar from './TopBar.jsx';
 import NavBar from './NavBar.jsx';
 import Weather from './weather/Weather.jsx';
 import Commute from './commute/Commute.jsx';
@@ -10,12 +11,13 @@ var App = React.createClass ({
 
 		var mainContainerStyle = {
 			height: '100vh',
-			padding: 25,
-			backgroundColor: 'white'
+			padding: '50px 25px',
+			backgroundColor: 'white',
 		}
 
 		return (
 			<div>
+				<TopBar/>
 				<div style={mainContainerStyle}>
 					<Commute />
 					<Weather />

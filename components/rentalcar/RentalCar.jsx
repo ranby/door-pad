@@ -7,7 +7,9 @@ var RentalCar = React.createClass ({
 			width: '49%',
 			height: '50vh',
 			float: 'right',
-			backgroundColor: '#EEEEEE'
+			backgroundColor: '#EEEEEE',
+			boxShadow: '-2px 0 3px #888888',
+			marginTop: 20,
 		}
 
 		return (

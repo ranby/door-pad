@@ -6,12 +6,8 @@ var Weather = React.createClass ({
 			time: '-',
 			temp: '-',
 			wind: '-',
-			text: '-'
+			pic: 'sun'
 		}
-	},
-
-	parseWeatherJsonResponse: function(result) {
-		alert("hej");
 	},
 
 	componentDidMount: function() {
@@ -20,18 +16,20 @@ var Weather = React.createClass ({
 			var wsym = result.timeSeries[0].parameters[18].values[0];
 			var wtext = '';
 			if (wsym < 3) 
-				wtext = 'sunny';
+				wtext = 'sun';
+			else if (wsym < 5)
+				wtext = 'cloud-sun';
 			else if (wsym < 8) 
-				wtext = 'cloudy';
+				wtext = 'cloud';
 			else if (wsym === 11 || wsym === 15)
-				wtext = 'snowy'
+				wtext = 'snow'
 			else 
-				wtext = 'rainy'
+				wtext = 'rain'
 			this.setState({
 				time: result.timeSeries[0].validTime,
 				temp: result.timeSeries[0].parameters[1].values[0],
 				wind: result.timeSeries[0].parameters[4].values[0],
-				text: wtext
+				pic: wtext
 			});
 		}.bind(this));
 	},
@@ -47,14 +45,21 @@ var Weather = React.createClass ({
 			float: 'right',
 			backgroundColor: '#00B4FF',
 			boxShadow: '-2px 0 3px #888888',
-			borderRadius: 2
+			borderRadius: 2,
+			marginTop: 20,
+		}
+		var weatherPicStyle = {
+			height: 120,
+			width: 120,
+			float: 'right',
+			marginRight: 25,
 		}
 
 		return (
 			<div style={weatherStyle}>
 				<p>Temp: {this.state.temp} °C</p>
 				<p>Wind: {this.state.wind} m/s</p>
-				<p>Forecast: {this.state.text}</p>
+				<img style={weatherPicStyle} src={'../../res/' + this.state.pic + '.svg'} />
 			</div>
 		);
 	}

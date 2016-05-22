@@ -1,4 +1,4 @@
-var config = {
+   var config = {
    entry: './main.js',
 	
    output: {
@@ -9,7 +9,11 @@ var config = {
    devServer: {
       inline: true,
       port: 8080,
-      historyApiFallback: true
+      historyApiFallback: true,
+      headers: {
+       'Access-Control-Allow-Origin': "*", 
+       'Access-Control-Allow-Credentials': "true" 
+      },
    },
 	
    module: {
