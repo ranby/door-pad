@@ -1,5 +1,7 @@
 import React from 'react';
 
+var DEBUG = true;
+
 var CommuteTimeTable = React.createClass ({
 	getInitialState: function() {
 		var sample = {
@@ -40,9 +42,11 @@ var CommuteTimeTable = React.createClass ({
 	},
 
 	componentDidMount: function() {
-		// this.serverRequest = $.get(this.props.url, function(result) {
-		// 	this.setState(result);
-		// }.bind(this));
+		if (!DEBUG) {
+			this.serverRequest = $.get(this.props.url, function(result) {
+				this.setState(result);
+			}.bind(this));
+		}
 	},
 
 	componentWillUnmount: function() {

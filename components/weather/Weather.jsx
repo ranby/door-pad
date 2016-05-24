@@ -34,15 +34,23 @@ var Weather = React.createClass ({
 		var weatherPicStyle = {
 			height: 120,
 			width: 120,
-			float: 'right',
-			marginRight: 25,
+			margin: '25px 35px',
+			marginBottom: 10,
+		}
+		var weatherTempStyle = {
+			margin: '0 55px',
+			fontSize: 26,
+		}
+		var weatherWindStyle = {
+			margin: '0 70px',
+			fontSize: 16,
 		}
 
 		return (
 			<div style={weatherStyle}>
-				<p>Temp: {this.state.temp} °C</p>
-				<p>Wind: {this.state.wind} m/s</p>
 				<img style={weatherPicStyle} src={'../../res/' + this.state.pic + '.svg'} />
+				<p style={weatherTempStyle}>{this.state.temp} °C</p>
+				<p style={weatherWindStyle}>{this.state.wind} m/s</p>
 			</div>
 		);
 	}
