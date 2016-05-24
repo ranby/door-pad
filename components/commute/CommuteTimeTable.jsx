@@ -3,40 +3,36 @@ import React from 'react';
 var CommuteTimeTable = React.createClass ({
 	getInitialState: function() {
 		var sample = {
-			kolonnvagen: [
+			departures: [
 				{
-					LineNumber: 515,
-					Destination: 'Sunbybergs Station',
-					DisplayTime: 'Nu',
-					TransportMode: 'BUS',
-					GroupOfLine: null
+					line: 515,
+					destination: 'Sunbybergs Station',
+					time: 'Nu',
+					transportType: 'BUS'
 				},
 				{
-					LineNumber: 515,
-					Destination: 'Odenplan',
-					DisplayTime: '2 min',
-					TransportMode: 'BUS',
-					GroupOfLine: null
+					line: 515,
+					destination: 'Odenplan',
+					time: '3 min',
+					transportType: 'BUS'
 				},
 				{
-					LineNumber: 176,
-					Destination: 'Mörby Station',
-					DisplayTime: '3 min',
-					TransportMode: 'BUS',
-					GroupOfLine: 'blåbuss'
+					line: 177,
+					destination: 'Skärvik',
+					time: '14 min',
+					transportType: 'BLUE BUS'
 				},
 				{
-					LineNumber: 177,
-					Destination: 'Stenhamra',
-					DisplayTime: '14 min',
-					TransportMode: 'BUS',
-					GroupOfLine: 'blåbuss'
+					line: 38,
+					destination: 'Märsta',
+					time: '22 min',
+					transportType: 'TRAIN'
 				},
 				{
-					LineNumber: 38,
-					Destination: 'Sunbybergs Station',
-					DisplayTime: '14:47',
-					TransportMode: 'TRAIN'
+					line: 176,
+					destination: 'Mörby Station',
+					time: '13:37',
+					transportType: 'BLUE BUS'
 				},
 			]
 		}
@@ -44,17 +40,9 @@ var CommuteTimeTable = React.createClass ({
 	},
 
 	componentDidMount: function() {
-		this.serverRequest = $.get(this.props.slUrl, function(result) {
-			if (this.props.slUrl.indexOf('3456') > -1) {
-				this.setState({
-				kolonnvagen: result.ResponseData.Buses
-				});
-			} else if (this.props.slUrl.indexOf('9509') > -1) {
-				this.setState({
-				kolonnvagen: result.ResponseData.Trains
-				});
-			}
-		}.bind(this));
+		// this.serverRequest = $.get(this.props.url, function(result) {
+		// 	this.setState(result);
+		// }.bind(this));
 	},
 
 	componentWillUnmount: function() {
@@ -94,20 +82,20 @@ var CommuteTimeTable = React.createClass ({
 		}
 
 		var rows = [];
-		var key = 0;
-		this.state.kolonnvagen.forEach(function(departure) {
+		for (var i = 0; i < 5 && i != this.state.departures.length; i++) {
+			var departure = this.state.departures[i];
 			var borderColorClass = {};
-			if (departure.TransportMode === 'TRAIN') borderColorClass = commuteCellStyle1Grey;
-			else if (departure.GroupOfLine === 'blåbuss') borderColorClass = commuteCellStyle1Blue;
+			if (departure.transportType === 'TRAIN') borderColorClass = commuteCellStyle1Grey;
+			else if (departure.transportType === 'BLUE BUS') borderColorClass = commuteCellStyle1Blue;
 			else borderColorClass = commuteCellStyle1Red;
 			rows.push(
-				<div key={key++} style={commuteRowStyle}>
-					<span style={$.extend({}, commuteCellStyle1, borderColorClass)}>{departure.LineNumber}</span>
-					<span style={commuteCellStyle2}>{departure.Destination}</span>
-					<span style={commuteCellStyle3}>{departure.DisplayTime}</span>
+				<div key={i} style={commuteRowStyle}>
+					<span style={$.extend({}, commuteCellStyle1, borderColorClass)}>{departure.line}</span>
+					<span style={commuteCellStyle2}>{departure.destination}</span>
+					<span style={commuteCellStyle3}>{departure.time}</span>
 				</div>
 			);
-		}.bind(this));
+		}
 		return (
 			<div>
 				<div style={commuteTableStyle}>
