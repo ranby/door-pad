@@ -1,17 +1,29 @@
 import React from 'react';
+import LargeWeatherDetails from './LargeWeatherDetails.jsx';
+import SmallWeatherDetails from './SmallWeatherDetails.jsx';
 
 var Weather = React.createClass ({
 	getInitialState: function() {
 		return {
-			time: '-',
-			temp: '-',
-			wind: '-',
-			pic: 'sun'
+			weather: [
+			{
+				pic: 'sun'
+			},
+			{
+				pic: 'sun'
+			},
+			{
+				pic: 'sun'
+			},
+			{
+				pic: 'sun'
+			}
+			]
 		}
 	},
 
 	componentDidMount: function() {
-		var weatherUrl = "http://192.168.1.10:3000/weather/home/now"
+		var weatherUrl = "http://192.168.1.10:3000/weather/home"
 		this.serverRequest = $.get(weatherUrl, function(result) {
 			this.setState(result);
 		}.bind(this));
@@ -23,34 +35,52 @@ var Weather = React.createClass ({
 
 	render: function() {
 		var weatherStyle = {
-			width: '49%',
+			width: '42%',
 			height: '50vh',
 			float: 'right',
 			backgroundColor: '#00B4FF',
 			boxShadow: '-2px 0 3px #888888',
 			borderRadius: 2,
 			marginTop: 20,
+			padding: '15px 30px',
 		}
-		var weatherPicStyle = {
-			height: 120,
-			width: 120,
-			margin: '25px 35px',
-			marginBottom: 10,
+		var weatherNowStyle = {
+			float: 'left',
+			width: '55%',
+			marginLeft: 0
 		}
-		var weatherTempStyle = {
-			margin: '0 55px',
-			fontSize: 26,
+		var weatherHeaderStyle = {
+			textAlign: 'center',
+			marginLeft: 0,
 		}
-		var weatherWindStyle = {
-			margin: '0 70px',
-			fontSize: 16,
+
+		var weatherLaterContainerStyle = {
+			float: 'right',
+			width: '44%',
 		}
+		var weatherLaterStyle = {
+			height: 100,
+		}
+		
 
 		return (
 			<div style={weatherStyle}>
-				<img style={weatherPicStyle} src={'../../res/' + this.state.pic + '.svg'} />
-				<p style={weatherTempStyle}>{this.state.temp} °C</p>
-				<p style={weatherWindStyle}>{this.state.wind} m/s</p>
+				<div style={weatherNowStyle}>
+					<h3 style={weatherHeaderStyle}>Now</h3>
+					<LargeWeatherDetails weather={this.state.weather[0]} />
+				</div>
+				<div style={weatherLaterContainerStyle}>
+					<h3 style={weatherHeaderStyle}>Later</h3>
+					<div style={weatherLaterStyle}>
+						<SmallWeatherDetails weather={this.state.weather[1]} />
+					</div>
+					<div style={weatherLaterStyle}>
+						<SmallWeatherDetails weather={this.state.weather[2]} />
+					</div>
+					<div style={weatherLaterStyle}>
+						<SmallWeatherDetails weather={this.state.weather[3]} />
+					</div>
+				</div>
 			</div>
 		);
 	}
