@@ -10,9 +10,10 @@ var App = React.createClass ({
 	render: function() {
 
 		var mainContainerStyle = {
-			height: '100vh',
-			padding: '50px 25px',
+			height: 718,
+			padding: '50px 15px 0 25px',
 			backgroundColor: 'white',
+			overflow: 'hidden'
 		}
 
 		return (

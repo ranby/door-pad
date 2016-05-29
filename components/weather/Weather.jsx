@@ -35,14 +35,14 @@ var Weather = React.createClass ({
 
 	render: function() {
 		var weatherStyle = {
-			width: '42%',
-			height: '50vh',
+			width: 390,
+			height: 320,
 			float: 'right',
 			backgroundColor: '#00B4FF',
 			boxShadow: '-2px 0 3px #888888',
 			borderRadius: 2,
 			marginTop: 20,
-			padding: '15px 30px',
+			padding: '0 30px',
 		}
 		var weatherNowStyle = {
 			float: 'left',
@@ -52,6 +52,7 @@ var Weather = React.createClass ({
 		var weatherHeaderStyle = {
 			textAlign: 'center',
 			marginLeft: 0,
+			marginBottom: 12,
 		}
 
 		var weatherLaterContainerStyle = {
@@ -59,7 +60,7 @@ var Weather = React.createClass ({
 			width: '44%',
 		}
 		var weatherLaterStyle = {
-			height: 100,
+			height: 90,
 		}
 		
 

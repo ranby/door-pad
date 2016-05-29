@@ -6,7 +6,7 @@ var LargeWeatherDetails = React.createClass ({
 			height: 150,
 			width: 150,
 			marginTop: '25px 35px',
-			marginTop: 30,
+			marginTop: 15,
 			marginBottom: 10,
 		}
 		var weatherLargeTempStyle = {
