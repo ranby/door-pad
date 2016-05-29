@@ -1,22 +1,25 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
 
 var RentalCar = React.createClass ({
 	getInitialState: function() {
 		return {
-			markers: [{
-		      	position: {
-		        lat: 25.0112183,
-		        lng: 121.52067570000001,
-		      	},
-		      	key: `Taiwan`,
-		      	defaultAnimation: 2,
-	    	}]
+			map: ''
 		}
+	},
+	componentDidMount: function() {
+		var mapOtions = {
+			center: {lat: 59.362524, lng: 18.018326},
+          	zoom: 15,
+          	disableDefaultUI: true,
+		};
+		map = new google.maps.Map(ReactDOM.findDOMNode(this), mapOtions);
+		this.setSate({map: map});
 	},
 	render: function() {
 		var rentalcarStyle = {
-			width: 450,
+			width: 600,
 			height: 320,
 			float: 'right',
 			backgroundColor: '#EEEEEE',
@@ -25,31 +28,8 @@ var RentalCar = React.createClass ({
 		}
 
 		return (
-			<GoogleMapLoader
-        		containerElement={
-	          		<div
-	            		{...this.props}
-	            		style={rentalcarStyle}
-	          		/>
-        		}
-		        googleMapElement={
-		          	<GoogleMap
-			            ref={(map) => (this._googleMapComponent = map) && console.log(map.getZoom())}
-			            defaultZoom={16}
-			            defaultCenter={{ lat: 59.362414, lng: 18.018337 }}
-			            // onClick={::this.handleMapClick}
-		          	>
-		            {this.state.markers.map((marker, index) => {
-		            //   	return (
-			           //      <Marker
-			           //        {...marker}
-			           //        onRightclick={this.handleMarkerRightclick.bind(this, index)}
-			           //      />
-		            	// );
-		            })}
-		          	</GoogleMap>
-		        }
-	      	/>
+			<div style={rentalcarStyle}>
+			</div>
 		);
 	}
 });

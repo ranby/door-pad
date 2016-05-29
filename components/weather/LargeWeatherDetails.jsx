@@ -2,6 +2,9 @@ import React from 'react';
 
 var LargeWeatherDetails = React.createClass ({
 	render: function() {
+		var weatherLargeStyle = {
+			textAlign: 'center',
+		}
 		var weatherLargePicStyle = {
 			height: 150,
 			width: 150,
@@ -10,7 +13,7 @@ var LargeWeatherDetails = React.createClass ({
 			marginBottom: 10,
 		}
 		var weatherLargeTempStyle = {
-			marginLeft: 15,	
+			
 		}
 		var weatherLargeTempPicStyle = {
 			height: 26,
@@ -22,7 +25,7 @@ var LargeWeatherDetails = React.createClass ({
 			display: 'inline',
 		}
 		var weatherLargeWindStyle = {
-			marginLeft: 35,
+			
 		}
 		var weatherLargeWindPicStyle = {
 			height: 16,
@@ -38,7 +41,7 @@ var LargeWeatherDetails = React.createClass ({
 		}
 
 		return (
-			<div>
+			<div style={weatherLargeStyle}>
 				<img style={weatherLargePicStyle} src={'../../res/' + this.props.weather.pic + '.svg'} />
 				<div style={weatherLargeTempStyle}>
 					<img style={weatherLargeTempPicStyle} src='../../res/thermometer.svg' />

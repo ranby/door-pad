@@ -1,6 +1,6 @@
 import React from 'react';
 
-var DEBUG = false;
+var DEBUG = true;
 
 var CommuteTimeTable = React.createClass ({
 	getInitialState: function() {
@@ -63,7 +63,7 @@ var CommuteTimeTable = React.createClass ({
 			marginBottom: 12
 		}
 		var commuteCellStyle1 = {
-			marginRight: 35,
+			marginRight: 15,
     		padding: 4,
 		}
 		var commuteCellStyle1Red = {
@@ -86,7 +86,7 @@ var CommuteTimeTable = React.createClass ({
 		}
 
 		var rows = [];
-		for (var i = 0; i < 5 && i != this.state.departures.length; i++) {
+		for (var i = 0; i < 6 && i != this.state.departures.length; i++) {
 			var departure = this.state.departures[i];
 			var borderColorClass = {};
 			if (departure.transportType === 'TRAIN') borderColorClass = commuteCellStyle1Grey;

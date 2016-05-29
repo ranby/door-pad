@@ -11,7 +11,7 @@ var Commute = React.createClass ({
 
 	render: function() {
 		var commuteStyle = {
-			width: 470,
+			width: 320,
 			height: '100vh',
 			float: 'left',
 			overflow: 'scroll',
@@ -19,10 +19,10 @@ var Commute = React.createClass ({
 
 		return (
 			<div style={commuteStyle}>
-				<h3>Buses from Kolonnvägen</h3>
-				<CommuteTimeTable url={this.state.urlKolonnvagen}/>
 				<h3>Trains from Solna Station</h3>
 				<CommuteTimeTable url={this.state.urlSolnastation}/>
+				<h3>Buses from Kolonnvägen</h3>
+				<CommuteTimeTable url={this.state.urlKolonnvagen}/>
 			</div>
 			);
 	}
