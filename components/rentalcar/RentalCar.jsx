@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
+import Update from 'react-addons-update'
 
 var RentalCar = React.createClass ({
 	getInitialState: function() {
 		return {
-			cars: []
+			car2go: {},
+			drivenow: {}
 		}
 	},
 	componentDidMount: function() {
@@ -18,16 +19,36 @@ var RentalCar = React.createClass ({
 
 		var car2goUrl = "http://192.168.1.10:3000/car2go/cars";
 		this.serverRequest = $.get(car2goUrl, function(result) {
-			this.setState(result);
+			var newCar2goState = Update(this.state, {
+				car2go: {$set: result}
+			});
+			this.setState(newCar2goState);
 
-			for (var i in this.state.cars) {
-				var car = this.state.cars[i];
+			for (var i in this.state.car2go.cars) {
+				var car = this.state.car2go.cars[i];
 				// console.log("Creating marker");
 				new google.maps.Marker({
 				    position: {lat: car.lat, lng: car.lng},
 				    map: map,
-				    title: 'Hello World!'
+				    icon: '../../res/car2go-marker.png'
 				  });
+			}
+		}.bind(this));
+
+		var drivenowUrl = "http://192.168.1.10:3000/drivenow/cars";
+		this.serverRequest2 = $.get(drivenowUrl, function(result) {
+			var newDrivenowState = Update(this.state, {
+				drivenow: {$set: result}
+			});
+			this.setState(newDrivenowState);
+
+			for (var i in this.state.drivenow.cars) {
+				var car = this.state.drivenow.cars[i];
+				new google.maps.Marker({
+					position: {lat: car.lat, lng: car.lng},
+					map: map,
+					icon: '../../res/drivenow-marker.png'
+				});
 			}
 		}.bind(this));
 	},
