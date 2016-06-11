@@ -17,7 +17,7 @@ var RentalCar = React.createClass ({
 		};
 		var map = new google.maps.Map(ReactDOM.findDOMNode(this), mapOtions);
 
-		var car2goUrl = "http://192.168.1.10:3000/car2go/cars";
+		var car2goUrl = "http://192.168.1.56:3000/car2go/cars";
 		this.serverRequest = $.get(car2goUrl, function(result) {
 			var newCar2goState = Update(this.state, {
 				car2go: {$set: result}
@@ -35,7 +35,7 @@ var RentalCar = React.createClass ({
 			}
 		}.bind(this));
 
-		var drivenowUrl = "http://192.168.1.10:3000/drivenow/cars";
+		var drivenowUrl = "http://192.168.1.56:3000/drivenow/cars";
 		this.serverRequest2 = $.get(drivenowUrl, function(result) {
 			var newDrivenowState = Update(this.state, {
 				drivenow: {$set: result}

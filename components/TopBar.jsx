@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../res/door_pad-logo.png';
 
 var TopBar = React.createClass({
 	getInitialState: function() {
@@ -42,7 +43,7 @@ var TopBar = React.createClass({
 		var gravatarUrl = "http://www.gravatar.com/avatar/" + md5(this.state.user.email) + "?d=mm";
 		return (
 			<div style={navBarStyle}>
-				<img style={navBarLogoStyle} src="../res/door_pad-logo.png" />
+				<img style={navBarLogoStyle} src={logo} />
 				<span style={navBarUserStyle}>
 					<span style={navBarUserNameStyle}>{this.state.user.name}</span>
 					<img style={navBarUserPicStyle} src={gravatarUrl}/>

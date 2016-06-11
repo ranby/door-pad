@@ -1,6 +1,6 @@
 import React from 'react';
 
-var DEBUG = true;
+var DEBUG = false;
 
 var CommuteTimeTable = React.createClass ({
 	getInitialState: function() {

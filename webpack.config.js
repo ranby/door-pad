@@ -26,6 +26,10 @@
             query: {
                presets: ['es2015', 'react']
             }
+         },
+         {
+            test: /\.(png|jpg|svg|)$/,
+            loader: 'url-loader?limit=200000'
          }
       ]
    }

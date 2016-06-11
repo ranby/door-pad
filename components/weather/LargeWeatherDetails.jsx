@@ -42,13 +42,13 @@ var LargeWeatherDetails = React.createClass ({
 
 		return (
 			<div style={weatherLargeStyle}>
-				<img style={weatherLargePicStyle} src={'../../res/' + this.props.weather.pic + '.svg'} />
+				<img style={weatherLargePicStyle} src={require('../../res/' + this.props.weather.pic + '.svg')} />
 				<div style={weatherLargeTempStyle}>
-					<img style={weatherLargeTempPicStyle} src='../../res/thermometer.svg' />
+					<img style={weatherLargeTempPicStyle} src={this.props.tempPic} />
 					<p style={weatherLargeTempTextStyle}>{this.props.weather.temp} °C</p>
 				</div>
 				<div style={weatherLargeWindStyle}>
-					<img style={weatherLargeWindPicStyle} src={'../../res/wind-arrow.svg'} />
+					<img style={weatherLargeWindPicStyle} src={this.props.windPic} />
 					<p style={weatherLargeWindTextStyle}>{this.props.weather.windStr} m/s</p>
 				</div>
 			</div>

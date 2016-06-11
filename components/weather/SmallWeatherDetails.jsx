@@ -44,14 +44,14 @@ var SmallWeatherDetails = React.createClass ({
 
 		return (
 			<div>
-				<img style={weatherSmallPicStyle} src={'../../res/' + this.props.weather.pic + '.svg'} />
+				<img style={weatherSmallPicStyle} src={require('../../res/' + this.props.weather.pic + '.svg')} />
 				<p style={weatherSmallTimeStyle}>{this.props.weather.time}</p>
 				<div style={weatherSmallTempStyle}>
-					<img style={weatherSmallTempPicStyle} src='../../res/thermometer.svg' />
+					<img style={weatherSmallTempPicStyle} src={this.props.tempPic} />
 					<p style={weatherSmallTempTextStyle}>{this.props.weather.temp} °C</p>
 				</div>
 				<div style={weatherSmallWindStyle}>
-					<img style={weatherSmallWindPicStyle} src={'../../res/wind-arrow.svg'} />
+					<img style={weatherSmallWindPicStyle} src={this.props.windPic} />
 					<p style={weatherSmallWindTextStyle}>{this.props.weather.windStr} m/s</p>
 				</div>
 			</div>

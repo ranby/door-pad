@@ -1,6 +1,8 @@
 import React from 'react';
 import LargeWeatherDetails from './LargeWeatherDetails.jsx';
 import SmallWeatherDetails from './SmallWeatherDetails.jsx';
+import tempPic from '../../res/thermometer.svg';
+import windPic from '../../res/wind-arrow.svg';
 
 var Weather = React.createClass ({
 	getInitialState: function() {
@@ -23,7 +25,7 @@ var Weather = React.createClass ({
 	},
 
 	componentDidMount: function() {
-		var weatherUrl = "http://192.168.1.10:3000/weather/home"
+		var weatherUrl = "http://192.168.1.56:3000/weather/home"
 		this.serverRequest = $.get(weatherUrl, function(result) {
 			this.setState(result);
 		}.bind(this));
@@ -53,7 +55,6 @@ var Weather = React.createClass ({
 			marginLeft: 0,
 			marginBottom: 12,
 		}
-
 		var weatherLaterContainerStyle = {
 			float: 'right',
 			width: '40%',
@@ -62,24 +63,23 @@ var Weather = React.createClass ({
 		var weatherLaterStyle = {
 			height: 90,
 		}
-		
 
 		return (
 			<div style={weatherStyle}>
 				<div style={weatherNowStyle}>
 					<h3 style={weatherHeaderStyle}>Now</h3>
-					<LargeWeatherDetails weather={this.state.weather[0]} />
+					<LargeWeatherDetails weather={this.state.weather[0]} tempPic={tempPic} windPic={windPic} />
 				</div>
 				<div style={weatherLaterContainerStyle}>
 					<h3 style={weatherHeaderStyle}>Later</h3>
 					<div style={weatherLaterStyle}>
-						<SmallWeatherDetails weather={this.state.weather[1]} />
+						<SmallWeatherDetails weather={this.state.weather[1]} tempPic={tempPic} windPic={windPic} />
 					</div>
 					<div style={weatherLaterStyle}>
-						<SmallWeatherDetails weather={this.state.weather[2]} />
+						<SmallWeatherDetails weather={this.state.weather[2]} tempPic={tempPic} windPic={windPic} />
 					</div>
 					<div style={weatherLaterStyle}>
-						<SmallWeatherDetails weather={this.state.weather[3]} />
+						<SmallWeatherDetails weather={this.state.weather[3]} tempPic={tempPic} windPic={windPic} />
 					</div>
 				</div>
 			</div>
