@@ -86,7 +86,7 @@ var CommuteTimeTable = React.createClass ({
 		}
 
 		var rows = [];
-		for (var i = 0; i < 6 && i != this.state.departures.length; i++) {
+		for (var i = 0; i < 8 && i != this.state.departures.length; i++) {
 			var departure = this.state.departures[i];
 			var borderColorClass = {};
 			if (departure.transportType === 'TRAIN') borderColorClass = commuteCellStyle1Grey;

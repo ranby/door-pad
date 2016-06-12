@@ -11,6 +11,11 @@ var TopBar = React.createClass({
 		}
 	},
 
+	handleClick: function() {
+		console.log('refreshing...');
+		location.reload();
+	},
+
 	render: function() {
 		var navBarStyle = {
 			position: 'fixed',
@@ -22,6 +27,12 @@ var TopBar = React.createClass({
 			height: '65%',
 			paddingLeft: 20,
 			paddingTop: 10,
+		}
+		var navBarRefreshStyle = {
+			cursor: 'pointer',
+			height: 30,
+			float: 'left',
+			marginTop: 5,
 		}
 		var navBarUserStyle = {
 			float: 'right',
@@ -45,6 +56,7 @@ var TopBar = React.createClass({
 			<div style={navBarStyle}>
 				<img style={navBarLogoStyle} src={logo} />
 				<span style={navBarUserStyle}>
+					<img src={require('../res/refresh.svg')} style={navBarRefreshStyle} onClick={this.handleClick} />
 					<span style={navBarUserNameStyle}>{this.state.user.name}</span>
 					<img style={navBarUserPicStyle} src={gravatarUrl}/>
 				</span>

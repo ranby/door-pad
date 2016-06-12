@@ -12,7 +12,7 @@ var Commute = React.createClass ({
 	render: function() {
 		var commuteStyle = {
 			width: 320,
-			height: '100vh',
+			height: '90vh',
 			float: 'left',
 			overflow: 'scroll',
 		}
