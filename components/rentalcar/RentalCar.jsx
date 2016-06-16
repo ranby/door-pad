@@ -27,11 +27,22 @@ var RentalCar = React.createClass ({
 			for (var i in this.state.car2go.cars) {
 				var car = this.state.car2go.cars[i];
 				// console.log("Creating marker");
-				new google.maps.Marker({
+				var marker = new google.maps.Marker({
 				    position: {lat: car.lat, lng: car.lng},
 				    map: map,
-				    icon: '../../res/car2go-marker.png'
+				    icon: '../../res/car2go-marker.png',
+				    animation: google.maps.Animation.DROP
 				  });
+				var infoWindow = new google.maps.InfoWindow();
+				var content = '<p>'+car.licensePlate+'</p>'+
+					'<p>'+car.address+'</p>'+
+					'<p>'+car.fuel+'%</p>';
+				marker.addListener('click', (function(marker, content, infoWindow) {
+					return function() {
+						infoWindow.setContent(content);
+						infoWindow.open(map, marker);
+					};
+				})(marker, content, infoWindow));
 			}
 		}.bind(this));
 
@@ -44,11 +55,22 @@ var RentalCar = React.createClass ({
 
 			for (var i in this.state.drivenow.cars) {
 				var car = this.state.drivenow.cars[i];
-				new google.maps.Marker({
+				var marker = new google.maps.Marker({
 					position: {lat: car.lat, lng: car.lng},
 					map: map,
-					icon: '../../res/drivenow-marker.png'
+					icon: '../../res/drivenow-marker.png',
+					animation: google.maps.Animation.DROP
 				});
+				var infoWindow = new google.maps.InfoWindow();
+				var content = '<p>'+car.licensePlate+'</p>'+
+					'<p>'+car.model+'</p>'+
+					'<p>'+car.fuel+'%</p>';
+				marker.addListener('click', (function(marker, content, infoWindow) {
+					return function() {
+						infoWindow.setContent(content);
+						infoWindow.open(map, marker);
+					};
+				})(marker, content, infoWindow));
 			}
 		}.bind(this));
 	},
