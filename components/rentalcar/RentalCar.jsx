@@ -11,7 +11,7 @@ var RentalCar = React.createClass ({
 	},
 	componentDidMount: function() {
 		var mapOtions = {
-			center: {lat: 59.362524, lng: 18.018326},
+			center: {lat: 59.345046, lng: 18.109319},
           	zoom: 15,
           	disableDefaultUI: true,
 		};

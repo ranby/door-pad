@@ -64,7 +64,7 @@ var CommuteTimeTable = React.createClass ({
 		}
 		var commuteCellStyle1 = {
 			marginRight: 15,
-    		padding: 4,
+    		padding: '4px 10px',
 		}
 		var commuteCellStyle1Red = {
 			border: '2px solid red',
