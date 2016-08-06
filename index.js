@@ -26497,8 +26497,8 @@
 
 		getInitialState: function getInitialState() {
 			return {
-				urlKolonnvagen: 'http://192.168.1.56:3000/commute/kolonnvagen',
-				urlSolnastation: 'http://192.168.1.56:3000/commute/solnastation'
+				urlRokubbsgatan: 'http://192.168.1.56:3000/commute/rokubbsgatan',
+				urlGardet: 'http://192.168.1.56:3000/commute/gardet'
 			};
 		},
 
@@ -26516,15 +26516,15 @@
 				_react2.default.createElement(
 					'h3',
 					null,
-					'Trains from Solna Station'
+					'Trains from Gärdet'
 				),
-				_react2.default.createElement(_CommuteTimeTable2.default, { url: this.state.urlSolnastation }),
+				_react2.default.createElement(_CommuteTimeTable2.default, { url: this.state.urlGardet }),
 				_react2.default.createElement(
 					'h3',
 					null,
-					'Buses from Kolonnvägen'
+					'Buses from Rökubbsgatan'
 				),
-				_react2.default.createElement(_CommuteTimeTable2.default, { url: this.state.urlKolonnvagen })
+				_react2.default.createElement(_CommuteTimeTable2.default, { url: this.state.urlRokubbsgatan })
 			);
 		}
 	});
@@ -26606,7 +26606,7 @@
 			};
 			var commuteCellStyle1 = {
 				marginRight: 15,
-				padding: 4
+				padding: '4px 10px'
 			};
 			var commuteCellStyle1Red = {
 				border: '2px solid red',
@@ -26699,7 +26699,7 @@
 		},
 		componentDidMount: function componentDidMount() {
 			var mapOtions = {
-				center: { lat: 59.362524, lng: 18.018326 },
+				center: { lat: 59.345046, lng: 18.109319 },
 				zoom: 15,
 				disableDefaultUI: true
 			};
