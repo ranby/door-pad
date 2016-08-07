@@ -66,17 +66,21 @@ var CommuteTimeTable = React.createClass ({
 			marginRight: 15,
     		padding: '4px 10px',
 		}
-		var commuteCellStyle1Red = {
+		var commuteCellStyle1Bus = {
 			border: '2px solid red',
     		borderRadius: '50%',
 		}
-		var commuteCellStyle1Blue = {
+		var commuteCellStyle1Bluebus = {
 			border: '2px solid blue',
     		borderRadius: '50%',
 		}
-		var commuteCellStyle1Grey = {
+		var commuteCellStyle1Train = {
 			border: '2px solid grey',
     		borderRadius: 5,
+		}
+		var commuteCellStyle1Metro = {
+			border: '2px solid red',
+			borderRadius: 5,
 		}
 		var commuteCellStyle2 = {
 
@@ -89,9 +93,10 @@ var CommuteTimeTable = React.createClass ({
 		for (var i = 0; i < 8 && i != this.state.departures.length; i++) {
 			var departure = this.state.departures[i];
 			var borderColorClass = {};
-			if (departure.transportType === 'TRAIN') borderColorClass = commuteCellStyle1Grey;
-			else if (departure.transportType === 'BLUE BUS') borderColorClass = commuteCellStyle1Blue;
-			else borderColorClass = commuteCellStyle1Red;
+			if (departure.transportType === 'TRAIN') borderColorClass = commuteCellStyle1Train;
+			else if (departure.transportType === 'BLUE BUS') borderColorClass = commuteCellStyle1Bluebus;
+			else if (departure.transportType === 'METRO') borderColorClass = commuteCellStyle1Metro;
+			else borderColorClass = commuteCellStyle1Bus;
 			rows.push(
 				<div key={i} style={commuteRowStyle}>
 					<span style={$.extend({}, commuteCellStyle1, borderColorClass)}>{departure.line}</span>
