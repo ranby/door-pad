@@ -4,8 +4,8 @@ import CommuteTimeTable from './CommuteTimeTable.jsx';
 var Commute = React.createClass ({
 	getInitialState: function() {
 		return {
-			urlRokubbsgatan: 'http://192.168.1.56:3000/commute/rokubbsgatan',
-			urlGardet: 'http://192.168.1.56:3000/commute/gardet'
+			urlRokubbsgatan: 'http://192.168.1.56:3000/commute/rökubbsgatan/Buses',
+			urlGardet: 'http://192.168.1.56:3000/commute/gärdet/Metros'
 		}
 	},
 

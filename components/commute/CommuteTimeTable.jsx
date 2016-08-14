@@ -10,31 +10,36 @@ var CommuteTimeTable = React.createClass ({
 					line: 515,
 					destination: 'Sunbybergs Station',
 					time: 'Nu',
-					transportType: 'BUS'
+					transportType: 'BUS',
+					blueBus: false
 				},
 				{
 					line: 515,
 					destination: 'Odenplan',
 					time: '3 min',
-					transportType: 'BUS'
+					transportType: 'BUS',
+					blueBus: false
 				},
 				{
 					line: 177,
 					destination: 'Skärvik',
 					time: '14 min',
-					transportType: 'BLUE BUS'
+					transportType: 'BUS',
+					blueBus: true
 				},
 				{
 					line: 38,
 					destination: 'Märsta',
 					time: '22 min',
-					transportType: 'TRAIN'
+					transportType: 'TRAIN',
+					blueBus: false
 				},
 				{
 					line: 176,
 					destination: 'Mörby Station',
 					time: '13:37',
-					transportType: 'BLUE BUS'
+					transportType: 'BUS',
+					blueBus: true
 				},
 			]
 		}
@@ -94,7 +99,7 @@ var CommuteTimeTable = React.createClass ({
 			var departure = this.state.departures[i];
 			var borderColorClass = {};
 			if (departure.transportType === 'TRAIN') borderColorClass = commuteCellStyle1Train;
-			else if (departure.transportType === 'BLUE BUS') borderColorClass = commuteCellStyle1Bluebus;
+			else if (departure.transportType === 'BUS' && departure.blueBus) borderColorClass = commuteCellStyle1Bluebus;
 			else if (departure.transportType === 'METRO') borderColorClass = commuteCellStyle1Metro;
 			else borderColorClass = commuteCellStyle1Bus;
 			rows.push(
