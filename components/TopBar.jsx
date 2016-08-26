@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router'
 import logo from '../res/door_pad-logo.png';
 
 var TopBar = React.createClass({
@@ -11,9 +12,14 @@ var TopBar = React.createClass({
 		}
 	},
 
-	handleClick: function() {
+	handleRefreshClick: function() {
 		console.log('refreshing...');
 		location.reload();
+	},
+
+	handleSettingsClick: function() {
+		console.log('go to settings');
+		window.location.href = '/#/settings';
 	},
 
 	render: function() {
@@ -27,6 +33,13 @@ var TopBar = React.createClass({
 			height: '65%',
 			paddingLeft: 20,
 			paddingTop: 10,
+		}
+		var navBarSettingsStyle = {
+			cursor: 'pointer',
+			height: 30,
+			float: 'left',
+			marginTop: 5,
+			marginRight: 15,
 		}
 		var navBarRefreshStyle = {
 			cursor: 'pointer',
@@ -56,7 +69,8 @@ var TopBar = React.createClass({
 			<div style={navBarStyle}>
 				<img style={navBarLogoStyle} src={logo} />
 				<span style={navBarUserStyle}>
-					<img src={require('../res/refresh.svg')} style={navBarRefreshStyle} onClick={this.handleClick} />
+					<img src={require('../res/settings.svg')} style={navBarSettingsStyle} onClick={this.handleSettingsClick} />
+					<img src={require('../res/refresh.svg')} style={navBarRefreshStyle} onClick={this.handleRefreshClick} />
 					<span style={navBarUserNameStyle}>{this.state.user.name}</span>
 					<img style={navBarUserPicStyle} src={gravatarUrl}/>
 				</span>
