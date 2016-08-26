@@ -25,7 +25,7 @@ var Weather = React.createClass ({
 	},
 
 	componentDidMount: function() {
-		var weatherUrl = "http://192.168.1.56:3000/weather/home"
+		var weatherUrl = this.props.url + "weather/home"
 		this.serverRequest = $.get(weatherUrl, function(result) {
 			this.setState(result);
 		}.bind(this));

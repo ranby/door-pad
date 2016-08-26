@@ -16,13 +16,15 @@ var App = React.createClass ({
 			overflow: 'hidden'
 		}
 
+		var apiUrl = 'http://192.168.1.56:3000/'
+
 		return (
 			<div>
 				<TopBar/>
 				<div style={mainContainerStyle}>
-					<Commute />
-					<Weather />
-					<RentalCar />
+					<Commute url={apiUrl} />
+					<Weather url={apiUrl} />
+					<RentalCar url={apiUrl} />
 				</div>
 			</div>
 			);
