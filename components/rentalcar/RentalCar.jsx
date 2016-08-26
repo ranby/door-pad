@@ -76,9 +76,8 @@ var RentalCar = React.createClass ({
 	},
 	render: function() {
 		var rentalcarStyle = {
-			width: 600,
-			height: 320,
-			float: 'right',
+			width: '100%',
+			height: '47%',
 			backgroundColor: '#EEEEEE',
 			boxShadow: '-2px 0 3px #888888',
 			marginTop: 20,

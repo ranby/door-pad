@@ -10,10 +10,16 @@ var App = React.createClass ({
 	render: function() {
 
 		var mainContainerStyle = {
-			height: 680,
-			padding: '50px 15px 0 25px',
+			height: '100%',
+			padding: '50px 20px 0 20px',
 			backgroundColor: 'white',
-			overflow: 'hidden'
+			overflow: 'visible'
+		}
+
+		var rightContainerStyle = {
+			height: '90vh',
+			width: '62%',
+			float: 'right'
 		}
 
 		var apiUrl = 'http://192.168.1.56:3000/'
@@ -23,8 +29,10 @@ var App = React.createClass ({
 				<TopBar/>
 				<div style={mainContainerStyle}>
 					<Commute url={apiUrl} />
-					<Weather url={apiUrl} />
-					<RentalCar url={apiUrl} />
+					<div style={rightContainerStyle}>
+						<Weather url={apiUrl} />
+						<RentalCar url={apiUrl} />
+					</div>
 				</div>
 			</div>
 			);
