@@ -22,6 +22,10 @@ var TopBar = React.createClass({
 		window.location.href = '/#/settings';
 	},
 
+	handleLogoClick: function() {
+		window.location.href = '/#';
+	},
+
 	render: function() {
 		var navBarStyle = {
 			position: 'fixed',
@@ -67,7 +71,7 @@ var TopBar = React.createClass({
 		var gravatarUrl = "http://www.gravatar.com/avatar/" + md5(this.state.user.email) + "?d=mm";
 		return (
 			<div style={navBarStyle}>
-				<img style={navBarLogoStyle} src={logo} />
+				<img style={navBarLogoStyle} src={logo} onClick={this.handleLogoClick} />
 				<span style={navBarUserStyle}>
 					<img src={require('../res/settings.svg')} style={navBarSettingsStyle} onClick={this.handleSettingsClick} />
 					<img src={require('../res/refresh.svg')} style={navBarRefreshStyle} onClick={this.handleRefreshClick} />
