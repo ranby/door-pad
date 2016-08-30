@@ -11,8 +11,8 @@ var Settings = React.createClass({
 				commuteStop1TransportType: 'Buses',
 				commuteStop2: '',
 				commuteStop2TransportType: 'Buses',
-				lng: 0,
 				lat: 0,
+				lng: 0,
 			};
 		}
 		return settingsState
@@ -51,10 +51,10 @@ var Settings = React.createClass({
 				<div style={mainContainerStyle}>
 					<h1> Settings </h1>
 					<h3>Account</h3>
-					<p>Longitude</p>
-					<input type="text" value={this.state.lng} onChange={this.handleLngChange} />
 					<p>Latitude</p>
 					<input type="text" value={this.state.lat} onChange={this.handleLatChange} />
+					<p>Longitude</p>
+					<input type="text" value={this.state.lng} onChange={this.handleLngChange} />
 
 					<h3> Commute </h3>
 					<p>Stop 1</p>

@@ -6,7 +6,16 @@ import windPic from '../../res/wind-arrow.svg';
 
 var Weather = React.createClass ({
 	getInitialState: function() {
+		var lat = 59.33;
+		var lng = 18.06;
+		var settings = JSON.parse(localStorage.getItem('settings'));
+		if (settings != null) {
+			lat = settings.lat;
+			lng = settings.lng;
+		}
 		return {
+			lat: lat,
+			lng: lng,
 			weather: [
 			{
 				pic: 'sun'
@@ -24,11 +33,15 @@ var Weather = React.createClass ({
 		}
 	},
 
-	componentDidMount: function() {
-		var weatherUrl = this.props.url + "weather/home"
+	componentDidMount: function() { 
+		var weatherUrl = this.props.url + "weather/"+this.state.lat+"/"+this.state.lng;
 		this.serverRequest = $.get(weatherUrl, function(result) {
-			this.setState(result);
-		}.bind(this));
+			if (result.weather != null) {
+				this.setState({weather: result.weather});
+			}
+		}.bind(this)).fail(function() {
+			console.log("Could not retrieve weather for this location");
+		});
 	},
 
 	componentWillUnmount: function() {
