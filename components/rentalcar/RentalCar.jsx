@@ -4,14 +4,23 @@ import Update from 'react-addons-update'
 
 var RentalCar = React.createClass ({
 	getInitialState: function() {
+		var lat = 59.33;
+		var lng = 18.06;
+		var settings = JSON.parse(localStorage.getItem('settings'));
+		if (settings != null) {
+			lat = settings.lat;
+			lng = settings.lng;
+		}
 		return {
+			lat: lat,
+			lng: lng,
 			car2go: {},
 			drivenow: {}
 		}
 	},
 	componentDidMount: function() {
 		var mapOtions = {
-			center: {lat: 59.345046, lng: 18.109319},
+			center: {lat: Number(this.state.lat), lng: Number(this.state.lng)},
           	zoom: 15,
           	disableDefaultUI: true,
 		};
